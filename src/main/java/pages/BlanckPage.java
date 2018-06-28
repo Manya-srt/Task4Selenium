@@ -32,9 +32,6 @@ public class BlanckPage {
     @FindBy(name = "birthDate")
     public WebElement birthDate;
 
-    @FindBy(name = "female")
-    public WebElement female;
-
     @FindBy(name = "passport_series")
     public WebElement passport_series;
 
@@ -50,7 +47,7 @@ public class BlanckPage {
     @FindBy(xpath = "//span[contains(text(),'Продолжить')]")
     public WebElement continueButton;
 
-    @FindBy(xpath = "//div[@ng-show='tryNext && myForm.$invalid'][text()='Заполнены не все обязательные поля']")
+    @FindBy(xpath = "//div[@ng-show='tryNext && myForm.$invalid']")
     public WebElement errorMessage;
 
     public BlanckPage () {
@@ -81,6 +78,7 @@ public class BlanckPage {
                 fillField(middlename, value);
                 break;
             case "Дата рождения":
+                birthDate.click();
                 fillField(birthDate, value);
                 break;
             case "Серия паспорта":

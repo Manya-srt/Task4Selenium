@@ -1,11 +1,7 @@
 package steps;
 
-import org.openqa.selenium.WebElement;
 import pages.BlanckPage;
 import ru.yandex.qatools.allure.annotations.Step;
-
-import java.util.HashMap;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -16,30 +12,11 @@ public class BlanckPageSteps {
         new BlanckPage().fillField(field, value);
     }
 
-    @Step("Заполняются поля:")
-    public void stepFillFields(HashMap<String, String> fields) {
-        fields.forEach(this::stepFillField);
-    }
-
     @Step("Поле {0} заполнено значением {1}")
     public void stepCheckFillField(String field, String value) {
         String actual = new BlanckPage().getFillField(field);
         assertTrue(String.format("Значение поля [%s] равно [%s]. Ожидалось - [%s]", field, actual, value),
                 actual.equals(value));
-    }
-
-
-    @Step("Поля заполнены верно:")
-    public void stepCheckFillFields(HashMap<String, String> fields) {
-        fields.forEach(this::stepCheckFillField);
-    }
-
-    @Step("Пол заполнен верно")
-
-
-    public void stepCheckMale(WebElement female){
-        new BlanckPage().female.click();
-        assertTrue("Неверно заполнен пол", female.isSelected());
     }
 
     @Step("Выполнено нажатие на кнопку - Продолжить")
