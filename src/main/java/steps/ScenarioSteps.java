@@ -26,7 +26,7 @@ public class ScenarioSteps {
     }
 
     @Then("^выполнено нажатие на кнопку Оформить Онлайн$")
-    public void clickSendButton() {
+    public void stepSendButton() {
         insurancePageSteps.stepSendButton();
     }
 
@@ -36,35 +36,35 @@ public class ScenarioSteps {
     }
 
     @When("^выбрана \"(.*)\" сумма$")
-    public void checkMinSum(String menuItem) {
+    public void checkSum(String menuItem) {
         programChoicePageSteps.selectSum(menuItem);
     }
 
     @Then("^выполнено нажатие на кнопку Оформить$")
-    public void clickFormalizeButton() {
+    public void clickIssueButton() {
         programChoicePageSteps.stepIssueButton();
     }
 
     @When("^заполняются поля:$")
-    public void stepFillFields(DataTable fields) {
+    public void stepFillField(DataTable fields) {
         fields.asMap(String.class, String.class).forEach(
                 (key, value) ->blanckPageSteps.stepFillField(key, value));
     }
 
     @Then("^значения полей равны:$")
-    public void checkFields(DataTable fields) {
+    public void CheckFillField(DataTable fields) {
         fields.asMap(String.class, String.class).forEach(
                 (field, value) -> blanckPageSteps.stepCheckFillField(field, value)
         );
     }
 
     @When("^выполнено нажатие на кнопку Продолжить$")
-    public void clickNext() {
+    public void continueButton() {
         blanckPageSteps.continueButton();
     }
 
     @Then("^выполнена проверка ошибочного сообщения \"(.+)\"$")
-    public void checkMassage(String messageError) {
+    public void checkMessage(String messageError) {
         blanckPageSteps.checkErrorMessageField(messageError);
     }
 
